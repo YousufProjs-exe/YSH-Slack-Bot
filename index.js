@@ -1,4 +1,17 @@
 
+/*
+    available commands:
+    - /ysh-help
+    - /ysh-ping
+    - /ysh-time
+    - /ysh-date
+    - /ysh-hello
+    - /ysh-neofetch
+
+    soon to be added:
+    thasts secrect.
+*/
+
 require("dotenv").config();
 
 const { App } = require("@slack/bolt");
@@ -78,18 +91,19 @@ app.command("/ysh-neofetch", async ({ ack, respond }) => {
   await respond({
     response_type: "ephemeral",
     text:
-      "```text\n" + 
-      "        __   __   ____  _   _\n" +
-      "        \\ \\ /  / / ___|| | | |\n" +
-      "         \\ V /  \\___ \\| |_| |\n" +
-      "          | |     ___) |  _  |\n" +
-      "          |_|    |____/|_| |_|\n\n" +
-      "        YSH — Yousuf Shell\n" +
-      "        Slack Edition\n" +
-      "        Runtime: Node.js\n" +
-      "        Framework: Slack Bolt\n" +
-      "        Mode: Socket Mode\n" +
-      "```",
+  "```\n" +
+  " __   __  _____  _   _ \n" +
+  " \\ \\ / / / ____|| | | |\n" +
+  "  \\ V / | (___  | |_| |\n" +
+  "   | |   \\___ \\ |  _  |\n" +
+  "   | |   ____) || | | |\n" +
+  "   |_|  |_____/ |_| |_|\n\n" +
+  " YSH — Yousuf Shell\n" +
+  " Slack Edition\n" +
+  " Runtime: Node.js\n" +
+  " Framework: Slack Bolt\n" +
+  " Mode: Socket Mode\n" +
+  "```",
   });
 });
 
