@@ -92,8 +92,8 @@ app.command("/ysh-neofetch", async ({ ack, respond }) => {
     response_type: "ephemeral",
     text:
   "```\n" +
-  " __   __  _____  _   _ \n" +
-  " \\ \\ / / / ____|| | | |\n" +
+  " __   __  _____  _   _ \n" +    // this may seems to be AI written
+  " \\ \\ / / / ____|| | | |\n" +  //  but only i now how irrittating it was
   "  \\ V / | (___  | |_| |\n" +
   "   | |   \\___ \\ |  _  |\n" +
   "   | |   ____) || | | |\n" +
