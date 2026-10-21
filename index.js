@@ -125,18 +125,18 @@ app.command("/ysh-remind", async ({ command, ack, respond }) => {
 
   setTimeout(async () => {
     try {
-      const dm = await app.client.conversations.open({
-        users: command.user_id,
-      });
-
       await app.client.chat.postMessage({
-        channel: dm.channel.id,
-        text: `⏰ Reminder: ${message}`,
-      });
-    } catch (error) {
+      channel: command.channel_id,
+      text: `<@${command.user_name}> reminder: ${message}`,
+    });
+    } 
+    
+    catch (error) {
       console.error("Reminder failed:", error);
     }
+
   }, delay);
+
 });
 
 // Whatsup ! 
