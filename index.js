@@ -16,7 +16,7 @@
     - /ysh-dice 
     - /ysh-whoami 
     - /ysh-password 
-    - /ysh-
+    - /ysh-whatsup
     - /ysh-
 */
 
@@ -92,8 +92,7 @@ app.command("/ysh-whoami", async ({ ack, respond, command}) => {
   // was first abt to keep only name but found out ID can be done too 
   await respond({
       response_type: "ephemeral",
-      text: `User: ${command.user_name}\n
-      User ID: ${command.user_id}`,
+      text: `User: ${command.user_name}\nUser ID: ${command.user_id}`,
   });
 });
 
