@@ -1,13 +1,13 @@
 {
   "name": "ysh-slack-bot",
-  "version": "2.0.0",
-  "description": "",
+  "version": "3.0.0",
+  "description": "YSH - Yousuf Shell, now on Slack.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Yousuf",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
