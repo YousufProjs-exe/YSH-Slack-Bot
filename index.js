@@ -91,22 +91,21 @@ app.command("/ysh-time", async ({ ack, respond }) => {
 });
 
 // Reminder to add ! 
-app.command("/ysh-remind", async ({ command, ack, respond}) => {
+app.command("/ysh-remind", async ({ command, ack, respond }) => {
   await ack();
 
-  const match = command.text.trim().match(/^(\d+)(s|m|h)\s+(.+)$/i);
+  const match = command.text.trim().match(/^(\d+)(s|`m|h)\s+(.+)$/i);
 
   if (!match) {
     await respond({
       response_type: "ephemeral",
-      // is an good example 
-      text: "Usage: `/ysh-remind 10m drink water`\nUnits: `s` seconds, `m` minutes, `h`hours",
+      text: "Usage: `/ysh-remind 10s test reminder`",
     });
     return;
   }
 
   const amount = Number(match[1]);
-  const unit = match[2].toLocaleLowerCase();
+  const unit = match[2].toLowerCase();
   const message = match[3].trim();
   const multipliers = { s: 1000, m: 60000, h: 3600000 };
   const delay = amount * multipliers[unit];
@@ -114,30 +113,30 @@ app.command("/ysh-remind", async ({ command, ack, respond}) => {
   if (!Number.isSafeInteger(amount) || amount < 1 || delay > 2147483647) {
     await respond({
       response_type: "ephemeral",
-      text: "Choose a valid duration between 1 second and about 24 days only.",
+      text: "Invalid duration. Maximum is about 24 days.",
     });
     return;
   }
 
   await respond({
-    response_type:"ephemeral",
+    response_type: "ephemeral",
     text: `Reminder set for ${amount}${unit}: "${message}"`,
   });
 
   setTimeout(async () => {
     try {
+      const dm = await app.client.conversations.open({
+        users: command.user_id,
+      });
+
       await app.client.chat.postMessage({
-        channel: command.user_id,
-        text: `Reminder: ${message}`,
-      });;
-    } 
-    
-    catch (error) {
-      console.error("try again as Reminder failed:", error);
+        channel: dm.channel.id,
+        text: `⏰ Reminder: ${message}`,
+      });
+    } catch (error) {
+      console.error("Reminder failed:", error);
     }
-
   }, delay);
-
 });
 
 // Whatsup ! 
