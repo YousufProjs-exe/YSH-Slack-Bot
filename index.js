@@ -41,7 +41,8 @@ app.command("/ysh-help", async ({ ack, respond }) => {
       "`/ysh-time` — Current time\n" +
       "`/ysh-date` — Current date\n" +
       "`/ysh-hello` — Say hello\n" +
-      "`/ysh-neofetch` — (Personal Favorite)\n",
+      "`/ysh-neofetch` — (Personal Favorite)\n" + 
+      "`/ysh-coinflip` — Filp a Coin ! \n",
   });
 });
 
@@ -87,6 +88,17 @@ app.command("/ysh-hello", async ({ ack, respond, command }) => {
   await respond({
     response_type: "in_channel",
     text: ` *YSH:* Hello, ${command.user_name}!`,
+  });
+});
+
+app.command("/ysh-coinflip", async ({ ack, respond }) => {
+  await ack();
+
+  const result = Math.random() < 0.5 ? "Heads" : "Tails";
+
+  await respond({
+    response_type: "in_channel",
+    text: ` ${result}!`,
   });
 });
 
