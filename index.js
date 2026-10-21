@@ -1,23 +1,24 @@
 
 /*
-    available commands:
-    - /ysh-help
-    - /ysh-ping
-    - /ysh-time
-    - /ysh-date
-    - /ysh-hello
-    - /ysh-neofetch
+    available commands: 
+    - /ysh-help 
+    - /ysh-ping 
+    - /ysh-time 
+    - /ysh-date 
+    - /ysh-hello 
+    - /ysh-neofetch 
 
-    soon to be added:
-    thasts secrect.
+    soon to be added: 
+    thasts secrect. 
 
     v2 updates: 
     - /ysh-coinflip 
     - /ysh-dice 
     - /ysh-whoami 
     - /ysh-password 
-    - /ysh-whatsup
-    - /ysh-
+    - /ysh-remind 
+    - /ysh-poll 
+    - /ysh-quote 
 */
 
 require("dotenv").config();
