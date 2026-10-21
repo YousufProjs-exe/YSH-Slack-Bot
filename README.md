@@ -46,4 +46,12 @@ YSH — Yousuf Shell, now on Slack.
 
 `/ysh-neofetch`
 
+<<<<<<< Updated upstream
 ![YSH fastfetch](Screenshots/ysh-neofetch.png)
+=======
+JavaScript • Node.js • Slack Bolt • Socket Mode • Railway
+
+## AI Usage
+
+AI was used for development assistance, and debugging.
+>>>>>>> Stashed changes
