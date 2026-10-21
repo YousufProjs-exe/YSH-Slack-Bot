@@ -41,6 +41,7 @@ app.command("/ysh-help", async ({ ack, respond }) => {
       "*YSH — Yousuf Shell*\n\n" +
       "`/ysh-help` - Show commands\n" +
       "`/ysh-ping` - Check status\n" +
+      "`/ysh-remind` - Add a reminder\n" +
       "`/ysh-time` - Current time\n" +
       "`/ysh-date` - Current date\n" +
       "`/ysh-whoami` - know abt you from YSH\n" +
@@ -87,6 +88,56 @@ app.command("/ysh-time", async ({ ack, respond }) => {
     response_type: "ephemeral",
     text: ` *YSH Time:* \`${time}\``, 
   });
+});
+
+// Reminder to add ! 
+app.command("/ysh-remind", async ({ command, ack, respond}) => {
+  await ack();
+
+  const match = command.text.trim().match(/^(\d+)(s|m|h)\s+(.+)$/i);
+
+  if (!match) {
+    await respond({
+      response_type: "ephemeral",
+      // is an good example 
+      text: "Usage: `/ysh-remind 10m drink water`\nUnits: `s` seconds, `m` minutes, `h`hours",
+    });
+    return;
+  }
+
+  const amount = Number(match[1]);
+  const unit = match[2].toLocaleLowerCase();
+  const message = match[3].trim();
+  const multipliers = { s: 1000, m: 60000, h: 3600000 };
+  const delay = amount * multipliers[unit];
+
+  if (!Number.isSafeInteger(amount) || amount < 1 || delay > 2147483647) {
+    await respond({
+      response_type: "ephemeral",
+      text: "Choose a valid duration between 1 second and about 24 days only.",
+    });
+    return;
+  }
+
+  await respond({
+    response_type:"ephemeral",
+    text: `Reminder set for ${amount}${unit}: "${message}"`,
+  });
+
+  setTimeout(async () => {
+    try {
+      await app.client.chat.postMessage({
+        channel: command.user_id,
+        text: `Reminder: ${message}`,
+      });;
+    } 
+    
+    catch (error) {
+      console.error("try again as Reminder failed:", error);
+    }
+
+  }, delay);
+
 });
 
 // Whatsup ! 

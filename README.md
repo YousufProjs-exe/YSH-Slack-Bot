@@ -64,7 +64,3 @@ YSH — Yousuf Shell, now on Slack.
 ## Built With
 
 JavaScript · Node.js · Slack Bolt · Socket Mode · Railway
-
-## AI Usage
-
-AI was used for development assistance and debugging.
