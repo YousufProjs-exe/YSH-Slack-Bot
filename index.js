@@ -208,8 +208,8 @@ app.command("/ysh-neofetch", async ({ ack, respond }) => {
     text:
   "```\n" +
   " __   __  _____  _   _ \n" +    // this may seems to be AI written
-  " \\ \\ / / / ____|| | | |\n" +  //  but only i now how irrittating it was
-  "  \\ V / | (___  | |_| |\n" +
+  " \\ \\ / / / ____|| | | |\n" +  //  but only i now how irrittating it was 
+  "  \\ V / | (___  | |_| |\n" +   // to make this masterpiece.
   "   | |   \\___ \\ |  _  |\n" +
   "   | |   ____) || | | |\n" +
   "   |_|  |_____/ |_| |_|\n\n" +
@@ -226,6 +226,7 @@ app.command("/ysh-neofetch", async ({ ack, respond }) => {
 app.command("/ysh-quote", async ({ ack, respond }) => {
   await ack();
 
+  // got this from Google. btw 
   const quotes = [
     "Great things are done by a series of small things brought together. — Vincent van Gogh",
     "First, solve the problem. Then, write the code. — John Johnson",
@@ -237,6 +238,7 @@ app.command("/ysh-quote", async ({ ack, respond }) => {
     "Talk is cheap. Show me the code. — Linus Torvalds",
     "Any sufficiently advanced technology is indistinguishable from magic. — Arthur C. Clarke",
     "Code is like humor. When you have to explain it, it's bad. — Cory House",
+    "Only Limit is your Imagination. — Steve ig"
   ];
 
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
