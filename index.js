@@ -44,9 +44,24 @@ app.command("/ysh-help", async ({ ack, respond }) => {
       "`/ysh-date` - Current date\n" +
       "`/ysh-whoami` - know abt you from YSH\n" +
       "`/ysh-hello` - Say hello\n" +
+      "`/ysh-password` - generate a password\n" +
       "`/ysh-neofetch` - (Personal Favorite)\n" + 
       "`/ysh-dice` - Rollly rolly dice\n" + 
       "`/ysh-coinflip` - Filp a Coin ! \n",
+  });
+});
+
+// let YSH create a password for u 
+app.command("/ysh-password", async ({ ack, respond }) => {
+  await ack();
+
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*";
+  const bytes = require("crypto").randomBytes(16);
+  const password = Array.from(bytes, b => chars[b % chars.length]).join("");
+
+  await respond({
+    response_type: "ephemeral",
+    text: `Generated password: \`${password}\``,
   });
 });
 
