@@ -6,27 +6,31 @@ YSH — Yousuf Shell, now on Slack.
 
 ## Features
 
-- 6 commands
-- System information 
-- Easter egg 
-- Slack-native utilities 
-- 24/7 live deployment 
+- 10 slash commands
+- System information
+- Easter egg
+- Slack-native utilities
+- Random password generation
+- Dice rolling and coin flipping
+- Current time and date
+- Personal Slack identity lookup
+- 24/7 live deployment
 
 ## Examples
 
-### Help 
+### Help
 
 `/ysh-help`
 
 ![YSH Help](Screenshots/ysh-help.png)
 
-### System Check 
+### System Check
 
 `/ysh-ping`
 
 ![YSH Check](Screenshots/ysh-ping.png)
 
-### Whatsup 
+### Time and Date
 
 `/ysh-time`
 
@@ -36,22 +40,31 @@ YSH — Yousuf Shell, now on Slack.
 
 ![YSH Date](Screenshots/ysh-date.png)
 
-### Greeting 
+### Greeting
 
 `/ysh-hello`
 
-![YSH says Hello!](Screenshots/ysh-hello.png)
+![YSH says Hello](Screenshots/ysh-hello.png)
 
-### Try Once 
+### System Information
 
 `/ysh-neofetch`
 
-<<<<<<< Updated upstream
 ![YSH fastfetch](Screenshots/ysh-neofetch.png)
-=======
-JavaScript • Node.js • Slack Bolt • Socket Mode • Railway
+
+### More Commands
+
+- `/ysh-coinflip` — Flip a coin
+- `/ysh-dice` — Roll a dice
+- `/ysh-whoami` — Display your Slack identity
+- `/ysh-password` — Generate a random password
+
+![YSH New Commands](Screenshots/ysh-v2.png)
+
+## Built With
+
+JavaScript · Node.js · Slack Bolt · Socket Mode · Railway
 
 ## AI Usage
 
-AI was used for development assistance, and debugging.
->>>>>>> Stashed changes
+AI was used for development assistance and debugging.
