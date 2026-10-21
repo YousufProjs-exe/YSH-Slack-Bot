@@ -40,6 +40,7 @@ app.command("/ysh-help", async ({ ack, respond }) => {
     text:
       "*YSH — Yousuf Shell*\n\n" +
       "`/ysh-help` - Show commands\n" +
+      "`/ysh-quote` - Quotes..!\n" +
       "`/ysh-ping` - Check status\n" +
       "`/ysh-remind` - Add a reminder\n" +
       "`/ysh-time` - Current time\n" +
@@ -127,6 +128,8 @@ app.command("/ysh-remind", async ({ command, ack, respond }) => {
     try {
       await app.client.chat.postMessage({
       channel: command.channel_id,
+      // text: `<@${command.user_id}> reminder: ${message}`,
+      // was onto adding id instead of name 
       text: `<@${command.user_name}> reminder: ${message}`,
     });
     } 
@@ -216,6 +219,31 @@ app.command("/ysh-neofetch", async ({ ack, respond }) => {
   " Framework: Slack Bolt\n" +
   " Mode: Socket Mode\n" +
   "```",
+  });
+});
+
+// Quotes ! now my my philosophy works 
+app.command("/ysh-quote", async ({ ack, respond }) => {
+  await ack();
+
+  const quotes = [
+    "Great things are done by a series of small things brought together. — Vincent van Gogh",
+    "First, solve the problem. Then, write the code. — John Johnson",
+    "Simplicity is the soul of efficiency. — Austin Freeman",
+    "Make it work, make it right, make it fast. — Kent Beck",
+    "It always seems impossible until it's done. — Nelson Mandela",
+    "Stay hungry, stay foolish. — Steve Jobs",
+    "The secret of getting ahead is getting started. — Mark Twain",
+    "Talk is cheap. Show me the code. — Linus Torvalds",
+    "Any sufficiently advanced technology is indistinguishable from magic. — Arthur C. Clarke",
+    "Code is like humor. When you have to explain it, it's bad. — Cory House",
+  ];
+
+  const quote = quotes[Math.floor(Math.random() * quotes.length)];
+
+  await respond({
+    response_type: "in_channel",
+    text: `*Quote of the moment*\n>${quote}`,
   });
 });
 
