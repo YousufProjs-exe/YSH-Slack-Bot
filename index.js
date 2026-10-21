@@ -42,6 +42,7 @@ app.command("/ysh-help", async ({ ack, respond }) => {
       "`/ysh-date` — Current date\n" +
       "`/ysh-hello` — Say hello\n" +
       "`/ysh-neofetch` — (Personal Favorite)\n" + 
+      "`/ysh-dice` — Rollly rolly dice\n" + 
       "`/ysh-coinflip` — Filp a Coin ! \n",
   });
 });
@@ -91,7 +92,7 @@ app.command("/ysh-hello", async ({ ack, respond, command }) => {
   });
 });
 
-// flip a coin and decide ! 
+// flip a coin to decide ! 
 app.command("/ysh-coinflip", async ({ ack, respond }) => {
   await ack();
 
@@ -100,6 +101,18 @@ app.command("/ysh-coinflip", async ({ ack, respond }) => {
   await respond({
     response_type: "in_channel",
     text: ` ${result}!`,
+  });
+});
+
+// Roll a dice !!  - rolly rolly.. 
+app.command("/ysh-dice", async ({ ack, respond }) => {
+  await ack();
+
+  const result = Math.floor(Math.random() * 6) + 1;
+
+  await respond({
+    response_type: "in_channel",
+    text: ` You rolled a ${result}!`,
   });
 });
 
