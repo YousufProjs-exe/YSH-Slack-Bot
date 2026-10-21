@@ -10,6 +10,12 @@
 
     soon to be added:
     thasts secrect.
+
+    v2 updates: 
+    - /ysh-coinflip 
+    - /ysh-dice 
+    - /ysh-whoami 
+    - /ysh-password 
 */
 
 require("dotenv").config();
