@@ -1,22 +1,45 @@
 # YSH Slack Bot
 
-YSH — Yousuf Shell, now on Slack.
+**YSH — Yousuf Shell, now on Slack.**
 
-![YSH fastfetch](Screenshots/ysh-neofetch.png)
+A collection of useful Slack slash commands, from quick utilities to interactive polls and reminders.
+- [Try it](https://app.slack.com/client/E09V59WQY1E/C0C16SN12P5)
+
+![YSH System Information](Screenshots/ysh-neofetch.png)
 
 ## Features
 
-- 10 slash commands
-- System information
-- Easter egg
-- Slack-native utilities
+- 13 slash commands
+- System information and bot status
 - Random password generation
-- Dice rolling and coin flipping
-- Current time and date
+- Dice rolls
+- coin flips
+- Current time 
+- and date
 - Personal Slack identity lookup
-- 24/7 live deployment
+- Random quotes
+- Channel polls with interactive voting
+- Scheduled reminders in Slack channels
+- A little YSH personality and an easter egg
+- 24/7 deployment on Railway
 
-## Examples
+## Commands 
+
+`/ysh-help` - Display available commands 
+`/ysh-ping` - Check bot status 
+`/ysh-time` - Get the current time 
+`/ysh-date` - Get the current date 
+`/ysh-hello` - Get a greeting 
+`/ysh-neofetch` - Display YSH system information 
+`/ysh-coinflip` - Flip a coin 
+`/ysh-dice` - Roll a six-sided die 
+`/ysh-whoami` - Display your Slack identity 
+`/ysh-password` - Generate a random password 
+`/ysh-remind` - Schedule a reminder in a channel 
+`/ysh-quote` - Get a random quote 
+`/ysh-poll` - Create an interactive poll 
+
+## Screenshots
 
 ### Help
 
@@ -24,11 +47,11 @@ YSH — Yousuf Shell, now on Slack.
 
 ![YSH Help](Screenshots/ysh-help.png)
 
-### System Check
+### Bot Status
 
 `/ysh-ping`
 
-![YSH Check](Screenshots/ysh-ping.png)
+![YSH Ping](Screenshots/ysh-ping.png)
 
 ### Time and Date
 
@@ -44,23 +67,21 @@ YSH — Yousuf Shell, now on Slack.
 
 `/ysh-hello`
 
-![YSH says Hello](Screenshots/ysh-hello.png)
+![YSH Greeting](Screenshots/ysh-hello.png)
 
-### System Information
 
-`/ysh-neofetch`
-
-![YSH fastfetch](Screenshots/ysh-neofetch.png)
-
-### More Commands
+### Additional Commands added in v2 
 
 - `/ysh-coinflip` — Flip a coin
 - `/ysh-dice` — Roll a dice
 - `/ysh-whoami` — Display your Slack identity
 - `/ysh-password` — Generate a random password
+- `/ysh-quote` - Get a random quote 
+- `/ysh-poll` - Create an interactive poll 
 
-![YSH New Commands](Screenshots/ysh-v2.png)
+![YSH V2 Commands](Screenshots/ysh-v2%20(2).png)
 
 ## Built With
 
-JavaScript · Node.js · Slack Bolt · Socket Mode · Railway
+- JavaScript
+- Node.js

@@ -7,10 +7,7 @@
     - /ysh-date 
     - /ysh-hello 
     - /ysh-neofetch 
-
-    soon to be added: 
-    thasts secrect. 
-
+    
     v2 updates: 
     - /ysh-coinflip 
     - /ysh-dice 
@@ -19,6 +16,11 @@
     - /ysh-remind 
     - /ysh-poll 
     - /ysh-quote 
+    
+    soon to be added: 
+    thasts secrect. 
+    maybe 
+    - /ysh-calc again ! 
 */
 
 require("dotenv").config();
