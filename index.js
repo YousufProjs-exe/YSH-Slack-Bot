@@ -16,6 +16,8 @@
     - /ysh-dice 
     - /ysh-whoami 
     - /ysh-password 
+    - /ysh-
+    - /ysh-
 */
 
 require("dotenv").config();
@@ -36,14 +38,15 @@ app.command("/ysh-help", async ({ ack, respond }) => {
     response_type: "ephemeral",
     text:
       "*YSH — Yousuf Shell*\n\n" +
-      "`/ysh-help` — Show commands\n" +
-      "`/ysh-ping` — Check status\n" +
-      "`/ysh-time` — Current time\n" +
-      "`/ysh-date` — Current date\n" +
-      "`/ysh-hello` — Say hello\n" +
-      "`/ysh-neofetch` — (Personal Favorite)\n" + 
-      "`/ysh-dice` — Rollly rolly dice\n" + 
-      "`/ysh-coinflip` — Filp a Coin ! \n",
+      "`/ysh-help` - Show commands\n" +
+      "`/ysh-ping` - Check status\n" +
+      "`/ysh-time` - Current time\n" +
+      "`/ysh-date` - Current date\n" +
+      "`/ysh-whoami` - know abt you from YSH\n" +
+      "`/ysh-hello` - Say hello\n" +
+      "`/ysh-neofetch` - (Personal Favorite)\n" + 
+      "`/ysh-dice` - Rollly rolly dice\n" + 
+      "`/ysh-coinflip` - Filp a Coin ! \n",
   });
 });
 
@@ -79,6 +82,18 @@ app.command("/ysh-date", async ({ ack, respond }) => {
   await respond({
     response_type: "ephemeral",
     text: ` *YSH Date:* \`${date}\``,
+  });
+});
+
+// lol know urself 
+app.command("/ysh-whoami", async ({ ack, respond, command}) => {
+  await ack();
+
+  // was first abt to keep only name but found out ID can be done too 
+  await respond({
+      response_type: "ephemeral",
+      text: `User: ${command.user_name}\n
+      User ID: ${command.user_id}`,
   });
 });
 
