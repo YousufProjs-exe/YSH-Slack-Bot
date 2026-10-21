@@ -50,6 +50,7 @@ app.command("/ysh-help", async ({ ack, respond }) => {
       "`/ysh-password` - generate a password\n" +
       "`/ysh-neofetch` - (Personal Favorite)\n" + 
       "`/ysh-dice` - Rollly rolly dice\n" + 
+      "`/ysh-poll` - host a poll\n" + 
       "`/ysh-coinflip` - Filp a Coin ! \n",
   });
 });
@@ -88,6 +89,98 @@ app.command("/ysh-time", async ({ ack, respond }) => {
   await respond({
     response_type: "ephemeral",
     text: ` *YSH Time:* \`${time}\``, 
+  });
+});
+
+// Poll to decide 
+app.command("/ysh-poll", async ({ command, ack, respond, client }) => {
+  await ack();
+
+  const parts = command.text.split("|").map((part) => part.trim());
+  const question = parts[0];
+  const options = parts.slice(1).filter(Boolean);
+
+  if (!question || options.length < 2 || options.length > 5) {
+    await respond({
+      response_type: "ephemeral",
+      text: "Usage: `/ysh-poll Favorite color? | Red | Blue | Green`\nProvide 2 - 5 options separated by `|`.",
+    });
+    return;
+  }
+
+  const votes = new Map();
+
+  await client.chat.postMessage({
+    channel: command.channel_id,
+    text: `📊 ${question}`,
+    blocks: [
+      {
+        type: "section",
+        text: { type: "mrkdwn", text: `📊 *${question}*` },
+      },
+      {
+        type: "actions",
+        elements: options.map((option, index) => ({
+          type: "button",
+          text: { type: "plain_text", text: option },
+          action_id: `ysh_poll_vote_${index}`,
+          value: `${index}`,
+        })),
+      },
+      {
+        type: "context",
+        elements: [{ type: "mrkdwn", text: "Votes: 0" }],
+      },
+    ],
+  });
+
+  await respond({
+    response_type: "ephemeral",
+    text: "Poll posted!",
+  });
+});
+
+app.action(/^ysh_poll_vote_/, async ({ ack, body, action, client }) => {
+  await ack();
+
+  const channel = body.channel.id;
+  const ts = body.message.ts;
+  const user = body.user.id;
+  const optionIndex = Number(action.value);
+
+  const key = `${channel}:${ts}`;
+
+  if (!global.yshPolls) global.yshPolls = new Map();
+  if (!global.yshPolls.has(key)) {
+    global.yshPolls.set(key, { votes: new Map(), options: [] });
+  }
+
+  const poll = global.yshPolls.get(key);
+  poll.votes.set(user, optionIndex);
+
+  const counts = new Map();
+  for (const vote of poll.votes.values()) {
+    counts.set(vote, (counts.get(vote) || 0) + 1);
+  }
+
+  const originalBlocks = body.message.blocks || [];
+  const updatedBlocks = originalBlocks.map((block) => {
+    if (block.type !== "context") return block;
+
+    return {
+      type: "context",
+      elements: [{
+        type: "mrkdwn",
+        text: `Total votes: ${poll.votes.size}`,
+      }],
+    };
+  });
+
+  await client.chat.update({
+    channel,
+    ts,
+    blocks: updatedBlocks,
+    text: body.message.text || "YSH Poll",
   });
 });
 
